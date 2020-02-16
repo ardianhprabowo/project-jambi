@@ -171,9 +171,9 @@ if(isset($_POST['login'])){
             </div><!-- /.col -->
           </div>
           <div class="form-group">
-                                                    <div class="col-sm-12 mt-4 text-center">
-                                                        <a href="recoverpw.html"><i class="fa fa-lock m-r-5"></i> Forgot password?</a>
-                                                    </div>
+          <div class="col-sm-12 mt-4 text-center">
+          <a href="recoverpw.html"><i class="fa fa-lock m-r-5"></i> Forgot password?</a>
+          </div>
                                                 </div>
         </form>
        
