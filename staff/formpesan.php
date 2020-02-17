@@ -1,4 +1,5 @@
 <?php  
+ob_start();
     include "../fungsi/koneksi.php";
     $error = "";
 
