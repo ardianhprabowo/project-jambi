@@ -55,7 +55,8 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Total Stok Barang</span>
-                <span class="info-box-number"><?= $data3['jmlbrg']; ?></span>
+                <span class="info-box-number"><?= $data3['jmlbrg'];exit(); ?></span>
+                
               </div>
               <!-- /.info-box-content -->
             </div>

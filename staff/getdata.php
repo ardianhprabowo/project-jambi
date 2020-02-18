@@ -4,7 +4,7 @@
 
 	$id = $_POST['jenis'];
 
-	$query = mysqli_query($koneksi,"select * from stokbarang WHERE id_jenis='$id'");
+	$query = mysqli_query($koneksi,"Select * FROM stokbarang WHERE id_jenis='$id'");
     
     if (mysqli_num_rows($query)) {
     	echo "<option>--Pilih Barang--</option>";

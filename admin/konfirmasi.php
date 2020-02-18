@@ -20,7 +20,7 @@
 	$query3 = mysqli_query($koneksi, "INSERT INTO pengeluaran (unit, kode_brg, jumlah, tgl_keluar)
 										VALUES ('$row2[unit]', '$row2[kode_brg]', '$row2[jumlah]', '$tanggal' ) ");
     
-    $query1 = mysqli_query($koneksi, "UPDATE permintaan SET status = '3' WHERE id_permintaan='$id' ");	
+    $query1 = mysqli_query($koneksi, "UPDATE permintaan SET status = '4' WHERE id_permintaan='$id' ");	
     if($query3) {
         header("location:index.php?p=datapesanan");
     } else {

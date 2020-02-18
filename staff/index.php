@@ -34,7 +34,18 @@ $page = isset($_GET['p']) ? $_GET['p'] : false;
   <link rel="stylesheet" href="../assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
+  <link rel="stylesheet" href="../assets/plugins/iCheck/flat/blue.css">  
+  <link rel="stylesheet" href="../assets/plugins/morris/morris.css">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="../assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="../assets/plugins/datepicker/datepicker3.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="../assets/plugins/daterangepicker/daterangepicker.css">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  
+  <script src="../assets/plugins/jQuery/jquery.min.js"></script>
   </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">

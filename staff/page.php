@@ -19,8 +19,8 @@
         include_once "detilpesan.php";
     } else if($page == "barang"){
         include_once "barang.php";
-    } else if($page == "cetakp"){
-        include_once "cetak.php";
+    } else if($page == "cetak"){
+        include_once "invoice-print.php";
     }
  ?>
  
