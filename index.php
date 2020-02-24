@@ -117,67 +117,57 @@ if (isset($_POST['login'])) {
   <link rel="shortcut icon" type="image/icon" href="../assets/dist/img/jr.png">
 
   <!-- Theme Css -->
-  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/bootstrap/css/custom.css" rel="stylesheet">
-  <link href="assets/dist/css/AdminLTE.min.css" rel="stylesheet">
-  <link href="assets/plugins/iCheck/square/blue.css" rel="stylesheet">
-  <link href="assets/fa/css/font-awesome.min.css" rel="stylesheet">
+ <!-- Font Awesome -->
+ <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
 <body class="hold-transition login-page">
-  <div class="login-box">
-    <div class="login-logo">
-    </div><!-- /.login-logo -->
-    <div class="login-box-body">
-      <h3 class="text-center">Aplikasi Inventory Aset</h3>
-      <h3 class="text-center">E-Factory</h3>
-      <img src="gambar/logo.png" style="width: 120px; height: 100px;">
+   <div class="card">
+    <div class="card-body login-card-body">
+      <h3 class="login-box-msg">Aplikasi Inventory Aset</h3>
+      <h3 class="login-box-msg">E-Factory</h3>
+      <center><img src="gambar/logo.png" style="width: 120px; height: 100px;"></center>
       <form method="post">
-        <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <input type="text" class="form-control" placeholder="Username" name="username" required />
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Username" name ="username" required >
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
           </div>
         </div>
-        <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-unlock"></i></span>
-            <input type="password" class="form-control" placeholder="Password" name="password" required>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Password" name="password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
           </div>
         </div>
-        <div class="form-group">
-          <div class="col-12">
-            <label class="cr-styled" for="setcookie">
-              <input type="checkbox" checked>
-              <i class="fa"></i>
-              Remember me
-            </label>
-          </div>
-        </div>
-        <!--   <div class="form-group">
-          	<div class="input-group col-md-7">          	
-          		<span class="input-group-addon"><i class="fa fa-shield"></i></span>
-	            <select class="form-control" name="level" required>            	
-	            	<option value>[Pilih Level]</option>
-	            	<option value="staff">Staff Divisi</option>
-	            	<option value="administrator">Administrator</option>
-	            	<option value="supervisor">Supervisor</option>
-	            </select>
-            </div>            
-          </div>-->
         <div class="row">
-          <div class="col-xs-12">
-            <input type="submit" class="btn btn-primary btn-block btn-flat pull-right" value="Login" name="login" />
-
-          </div><!-- /.col -->
-        </div>
-        <div class="form-group">
-          <div class="col-sm-12 mt-4 text-center">
-            <a href="recoverpw.html"><i class="fa fa-lock m-r-5"></i> Forgot password?</a>
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                Remember Me
+              </label>
+            </div>
           </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" value="Login" name="login" class="btn btn-primary btn-block">Sign In</button>
+          </div>
+          <!-- /.col -->
         </div>
       </form>
-
 
     </div>
     <?= $err; ?>
