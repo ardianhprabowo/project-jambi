@@ -17,4 +17,3 @@
 		$tanggal_indo = $split[2] . ' ' . $bulan[(int)$split[1]] . ' ' . $split[0];
 		return $tanggal_indo;
 	}
-?>

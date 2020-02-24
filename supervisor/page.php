@@ -40,5 +40,3 @@
     }else if ($page=="detilhistory"){
         include_once "detilhistory.php";
     }
- ?>
- 

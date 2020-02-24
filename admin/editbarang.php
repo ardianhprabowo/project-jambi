@@ -60,7 +60,7 @@
 						<div class="form-group">
                             <label for="jumlah" class="col-sm-offset-1 col-sm-3 control-label">Satuan</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" value="<?= $row2['satuan']; ?>" name="satuan">
+                                <input type="text" readonly class="form-control" value="<?= $row2['satuan']; ?>" name="satuan">
                             </div>
                         </div>
                         <div class="form-group">
