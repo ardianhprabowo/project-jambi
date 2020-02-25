@@ -48,7 +48,7 @@ $query = mysqli_query($koneksi, "SELECT tgl_permintaan, count(kode_brg)  FROM pe
                                             <td> <?= tanggal_indo($row['tgl_permintaan']); ?> </td>
                                             <td> <?= $row['count(kode_brg)']; ?> </td>
                                             <td>
-                                                <a target="_blank" href="cetakbpp.php?&tgl_permintaan=<?= $row['tgl_permintaan']; ?>&unit=<?= $row['unit']; ?>"><span data-placement='top' data-toggle='tooltip' title='Cetak BPP'><button id="cetakpdf" class="btn btn-success"><i class="fa fa-print"> Cetak BPP</i></button></span></a>
+                                                <a target="_blank" href="invoice-print.php?&tgl=<?= $row['tgl_permintaan']; ?>&unit=<?= $row['unit']; ?>"><span data-placement='top' data-toggle='tooltip' title='Cetak BPP'><button id="cetakpdf" class="btn btn-success"><i class="fa fa-print"> Cetak BPP</i></button></span></a>
                                             </td>
                                 </tr>
 
