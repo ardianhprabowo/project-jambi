@@ -41,6 +41,7 @@
         include_once "history.php";
     }else if ($page=="detilhistory"){
         include_once "detilhistory.php";
+    }else if ($page == "stokbarang") {
+        include_once "stokbarang.php";
     }
  ?>
- 
