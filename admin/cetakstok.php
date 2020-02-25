@@ -1,4 +1,5 @@
 <?php ob_start(); ?>
+
 <!-- Setting CSS bagian header/ kop -->
 <style type="text/css">
   table.page_header {
@@ -102,8 +103,12 @@
   </thead>
   <tbody>
     <?php
-
-    $sql = mysqli_query($koneksi, "SELECT * FROM stokbarang WHERE id_jenis = '$id' ");
+    if (!empty($id)) {     
+      $sql = mysqli_query($koneksi, "SELECT * FROM stokbarang WHERE id_jenis='$id' ");
+  } else {
+    $sql = mysqli_query($koneksi, "SELECT * FROM stokbarang");
+    
+  }
     $i   = 1;
     while ($data = mysqli_fetch_array($sql)) {
     ?>
