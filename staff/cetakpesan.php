@@ -12,7 +12,7 @@ if (isset($_GET['aksi']) && isset($_GET['tgl'])) {
     }
 }
 
-$query = mysqli_query($koneksi, "SELECT tgl_permintaan, count(kode_brg)  FROM permintaan WHERE unit= '$_SESSION[divisi]' AND status=4  GROUP BY tgl_permintaan  ");
+$query = mysqli_query($koneksi, "SELECT unit,tgl_permintaan, count(kode_brg)  FROM permintaan WHERE unit= '$_SESSION[divisi]' AND status=4  GROUP BY tgl_permintaan  ");
 
 ?>
 
