@@ -31,7 +31,7 @@ if (isset($_GET['id_jenis'])) {
         <div class="col-sm-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="text-center">Olah Data Stok Barang <?= $_SESSION['id_jenis']; ?></h3>
+                    <h3 class="text-center">Olah Data Stok Barang </h3>
                 </div>
                 <div class="box-body">
                     <div class="row">
