@@ -2,6 +2,9 @@
 session_start();
 include "../fungsi/koneksi.php";
 include "../fungsi/fungsi.php";
+
+$unit = $_GET['unit'];
+
 if (isset($_GET['tgl'])) {
     $tgl = $_GET['tgl'];
     $query = mysqli_query($koneksi, "SELECT  permintaan.id_permintaan, permintaan.kode_brg, nama_brg, jumlah, satuan,permintaan.keterangan, status FROM permintaan INNER JOIN 
@@ -9,8 +12,6 @@ if (isset($_GET['tgl'])) {
 }
 $id  = isset($_GET['id']) ? $_GET['id'] : false;
 
-
-$unit = $_GET['unit'];
 $tgl = $_GET['tgl'];
 
 $bln = array(
@@ -99,7 +100,7 @@ $bln = array(
                     <tr>
                         <td style="text-align: center; "><b>No.</b></td>
                         <td style="text-align: center; "><b>Tanggal Keluar</b></td>
-                        <td style="text-align: center; "><b>Unit Pelayanan</b></td>
+                        <td style="text-align: center; "><b>Unit</b></td>
                         <td style="text-align: center; "><b>Kode Barang</b></td>
                         <td style="text-align: center; "><b>Nama Barang</b></td>
                         <td style="text-align: center; "><b>Satuan</b></td>
@@ -143,14 +144,13 @@ $bln = array(
         echo 'gagal';
     }
     ?>
-
     <div class="row">
         <div class="col-sm-4">
             <p align='center'>Yang Menerima</p>
             <br>
             <br>
             <b>
-                <p align='center'>Danny Firnando<br>Kanit Operasional</p>
+                <p align='center'><?= $data2['nama']; ?><br>Kanit <?= $data2['unit']; ?></p>
             </b>
         </div>
         <div class="col-sm-4">
@@ -166,7 +166,7 @@ $bln = array(
             <br>
             <br>
             <b>
-                <p align='center'>Syafaat Rahman<br>Kanit HC & Umum</p>
+                <p align='center'><?= $data3['nama']; ?><br>Kanit HC & Umum</p>
             </b>
         </div>
     </div>

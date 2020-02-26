@@ -11,7 +11,7 @@
  Target Server Version : 80017
  File Encoding         : 65001
 
- Date: 16/02/2020 14:58:26
+ Date: 26/02/2020 19:34:31
 */
 
 SET NAMES utf8mb4;
@@ -73,6 +73,7 @@ INSERT INTO `jenis_barang` VALUES (1, 'ATK');
 INSERT INTO `jenis_barang` VALUES (2, 'KERTAS');
 INSERT INTO `jenis_barang` VALUES (3, 'TINTA');
 INSERT INTO `jenis_barang` VALUES (4, 'LAINNYA');
+INSERT INTO `jenis_barang` VALUES (51, '');
 
 -- ----------------------------
 -- Table structure for pengeluaran
@@ -85,7 +86,7 @@ CREATE TABLE `pengeluaran`  (
   `jumlah` int(11) NOT NULL,
   `tgl_keluar` date NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pengeluaran
@@ -114,8 +115,28 @@ CREATE TABLE `permintaan`  (
 -- ----------------------------
 -- Records of permintaan
 -- ----------------------------
-INSERT INTO `permintaan` VALUES (12, 'Budi Purwanto', 2, 'Teknik dan Humas', 'JR001', 1, 10, '2020-02-12', '', 0);
-INSERT INTO `permintaan` VALUES (13, 'Budi Purwanto', 2, 'Teknik dan Humas', 'JR001', 1, 2, '2020-02-14', '', 2);
+INSERT INTO `permintaan` VALUES (12, 'Budi Purwanto', 2, 'Teknik dan Humas', 'JR001', 1, 10, '2020-02-12', '', 4);
+INSERT INTO `permintaan` VALUES (13, 'Budi Purwanto', 2, 'Teknik dan Humas', 'JR001', 1, 2, '2020-02-14', '', 4);
+
+-- ----------------------------
+-- Table structure for satuan_barang
+-- ----------------------------
+DROP TABLE IF EXISTS `satuan_barang`;
+CREATE TABLE `satuan_barang`  (
+  `id_satuan` int(11) NOT NULL,
+  `nama_satuan` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_satuan`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of satuan_barang
+-- ----------------------------
+INSERT INTO `satuan_barang` VALUES (1, 'Pcs');
+INSERT INTO `satuan_barang` VALUES (2, 'Lusin');
+INSERT INTO `satuan_barang` VALUES (3, 'Rim');
+INSERT INTO `satuan_barang` VALUES (4, 'Kodi');
+INSERT INTO `satuan_barang` VALUES (5, 'Gross');
+INSERT INTO `satuan_barang` VALUES (6, 'Pack');
 
 -- ----------------------------
 -- Table structure for sementara
@@ -157,6 +178,7 @@ CREATE TABLE `stokbarang`  (
 -- ----------------------------
 INSERT INTO `stokbarang` VALUES ('JR001', 1, 'Bolpoin', 'Pcs', 10000, 290, 9710, '2020-02-04', '');
 INSERT INTO `stokbarang` VALUES ('JR002', 1, 'Pensil', 'Pcs', 200, 0, 200, '2020-02-05', '');
+INSERT INTO `stokbarang` VALUES ('JR003', 2, 'A4', 'Rim', 200, 0, 200, '2020-02-24', '');
 
 -- ----------------------------
 -- Table structure for user

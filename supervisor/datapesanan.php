@@ -1,7 +1,13 @@
 <?php
 include "../fungsi/koneksi.php";
 include "../fungsi/fungsi.php";
-$query = mysqli_query($koneksi, "SELECT DISTINCT(unit), tgl_permintaan FROM permintaan WHERE status = '0' and unit = '{$_SESSION['divisi']}'");
+if ($_SESSION['divisi'] == 'Teknik dan Humas'){
+    $query = mysqli_query($koneksi, "SELECT DISTINCT(unit), tgl_permintaan FROM permintaan WHERE status = '0' and unit in ('Pelayanan','Teknik dan Humas')");
+} else {
+    $query = mysqli_query($koneksi, "SELECT DISTINCT(unit), tgl_permintaan FROM permintaan WHERE status = '0' and unit = '{$_SESSION['divisi']}'");
+}
+
+
 ?>
 <!-- Main content -->
 <section class="content">

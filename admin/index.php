@@ -85,7 +85,15 @@ if (!empty($_SESSION['login']) && ($_SESSION['level'] == "administrator")) {
                   </p>
                 </a>
               </li>
-              <li class="nav-item has-treeview menu-open">
+              <li class="nav-item">
+                <a href="index.php?p=stokbarang" class="nav-link">
+                  <i class="nav-icon fas fa-book"></i>
+                  <p>
+                    Stok Barang
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item has-treeview menu-close">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
@@ -106,42 +114,6 @@ if (!empty($_SESSION['login']) && ($_SESSION['level'] == "administrator")) {
                     <a href="index.php?p=history" class="nav-link">
                       <i class="nav-icon fas fa-history"></i>
                       <p>History</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item has-treeview menu-open">
-                <a href="index.php?p=stokbarang" class="nav-link active">
-                  <i class="nav-icon fas fa-copy"></i>
-                  <p>
-                    Stok Barang
-                    <span class="right badge badge-danger"><?= $data['jumlah']; ?></span>
-                    <i class="right fas fa-angle-left nav-icon"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="index.php?p=barang&id_jenis=1" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>ATK</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="index.php?p=barang&id_jenis=2" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>KERTAS</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="index.php?p=barang&id_jenis=3" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>TINTA</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="index.php?p=barang&id_jenis=4" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>LAINNYA</p>
                     </a>
                   </li>
                 </ul>

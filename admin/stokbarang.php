@@ -21,8 +21,6 @@ if (isset($_GET['id_jenis'])) {
     $query = mysqli_query($koneksi, "SELECT * FROM stokbarang");
 }
 
-
-
 ?>
 <!-- Main content -->
 <section class="content">
@@ -45,7 +43,8 @@ if (isset($_GET['id_jenis'])) {
                         <div class="col-sm-3">
                             <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="get">
                                 <div class="form-group">
-                                    <select class="form-control" name="jenis_barang">
+                                    <select class="form-control" name="id_jenis" onchange="window.location='index.php?p=stokbarang&id_jenis='+this.value">
+                                    <option value="">Pilih Filter</option>
                                         <?php
                                         //Perintah sql untuk menampilkan semua data pada tabel barang
                                         $sql = "SELECT * FROM jenis_barang ";
@@ -53,26 +52,24 @@ if (isset($_GET['id_jenis'])) {
                                         $no = 0;
                                         while ($data = mysqli_fetch_array($hasil)) {
                                             $no++;
-
-                                            $ket = "";
-                                            if (isset($_GET['jenis_barang'])) {
-                                                $barang = trim($_GET['jenis_barang']);
-
-                                                if ($barang == $data['id_jenis']) {
-                                                    $ket = "selected";
-                                                }
-                                            }
                                         ?>
-                                            <option <?php echo $ket; ?> value="<?php echo $data['id_jenis']; ?>"><?php echo $data['jenis_brg']; ?></option>
+                                            <option value="<?php echo $data['id_jenis']; ?>"><?php echo $data['jenis_brg']; ?></option>
                                         <?php
                                         }
                                         ?>
                                     </select>
                                 </div>
                             </form>
+                            <?php
+                         if(isset($_GET["id_jenis"])){
+                         $jenisid=$_GET["id_jenis"];   
+                         echo "Data Hasil Filter ";   
+
+                                }
+                            ?>
                         </div>
                         <div class="col-sm-2">
-                            <a href="index.php?p=stokbarang&id_jenis=1<?= $row['id_jenis']; ?>" class="btn btn-info"><i class="fa fa-search"></i> Filter</a>
+                            <a href="index.php?p=stokbarang" class="btn btn-info"><i class="fa fa-search"></i> Reset</a>
                         </div>
                         <div class="col-sm-3">
                             <a href="index.php?p=tambahkategori" class="btn btn-warning"><i class="fa fa-plus"></i> Tambah Kategori Barang</a>

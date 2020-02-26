@@ -45,5 +45,7 @@
         include_once "stokbarang.php";
     } else if ($page == "tambahkategori") {
     include_once "tambahkategori.php";
+    } else if($page == "cetakp"){
+        include_once "cetakbarangv2.php";
     }
  ?>

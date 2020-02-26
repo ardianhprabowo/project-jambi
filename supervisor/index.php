@@ -97,41 +97,13 @@ if (!empty($_SESSION['login']) && ($_SESSION['level'] == "supervisor")) {
                   </p>
                 </a>
               </li>
-              <li class="nav-item has-treeview menu-close">
-                <a href="#" class="nav-link">
+              <li class="nav-item">
+                <a href="index.php?p=barang" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
-                    Stok Barang
-                    <span class="right badge badge-danger"><?= $data['jumlah']; ?></span>
-                    <i class="right fas fa-angle-left nav-icon"></i>
+                    Data Barang
                   </p>
                 </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="index.php?p=barang&id_jenis=1" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>ATK</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="index.php?p=barang&id_jenis=2" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>KERTAS</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="index.php?p=barang&id_jenis=3" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>TINTA</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="index.php?p=barang&id_jenis=4" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>LAINNYA</p>
-                    </a>
-                  </li>
-                </ul>
               </li>
               <li class="nav-item">
                 <a href="index.php?p=disetujui" class="nav-link">

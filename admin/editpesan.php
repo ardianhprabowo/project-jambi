@@ -17,7 +17,7 @@
                 <div class="box-header with-border">
                     <h3 class="text-center">Edit Data Permintaan Barang</h3>
                 </div>
-                <form method="post"  action="edit_proses.php" class="form-horizontal">
+                <form method="post"  action="proses_edit.php" class="form-horizontal">
                     <div class="box-body">
                     	<input type="hidden" name="id" value="<?= $row2['id_permintaan']; ?>">
                     	<input type="hidden" name="tgl_permintaan" value="<?= $row2['tgl_permintaan']; ?>">                    	

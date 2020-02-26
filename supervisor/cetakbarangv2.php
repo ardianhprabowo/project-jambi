@@ -88,8 +88,8 @@ $bln = array(
     </table>
     <hr>
     <!-- /.row -->
-    <p align="center" style="font-weight: bold; font-size: 18px;"><u>BUKTI PENGELUARAN BARANG<br>No.28/MU/II/2020</u></p>
-    <p align="left">Kepada Yth.<br>Kanit Operasional</p>
+    <p align="center" style="font-weight: bold; font-size: 18px;"><u>BUKTI PENGELUARAN BARANG<br>No....</u></p>
+    <p align="left">Kepada Yth.<br>Kanit <?= $_SESSION['divisi']; ?></p>
     <p align="left">Harap diterima barang tersebut dibawah ini</p>
     <!-- Table row -->
     <div class="row">
@@ -99,7 +99,7 @@ $bln = array(
                     <tr>
                         <td style="text-align: center; "><b>No.</b></td>
                         <td style="text-align: center; "><b>Tanggal Keluar</b></td>
-                        <td style="text-align: center; "><b>Unit Pelayanan</b></td>
+                        <td style="text-align: center; "><b>Unit</b></td>
                         <td style="text-align: center; "><b>Kode Barang</b></td>
                         <td style="text-align: center; "><b>Nama Barang</b></td>
                         <td style="text-align: center; "><b>Satuan</b></td>
@@ -140,17 +140,21 @@ $bln = array(
     if ($query2) {
         $data2 = mysqli_fetch_assoc($query2);
     } else {
-        echo 'gagal';
     }
     ?>
+    <?php
+    
+$query = mysqli_query($koneksi, "SELECT nama FROM user where idjabatan = '2' and iddivisi ='1' ");
+$data = mysqli_fetch_assoc($query);
 
+    ?>
     <div class="row">
         <div class="col-sm-4">
             <p align='center'>Yang Menerima</p>
             <br>
             <br>
             <b>
-                <p align='center'>Danny Firnando<br>Kanit Operasional</p>
+                <p align='center'><?= $_SESSION['nama']; ?><br><?= $_SESSION['divisi']; ?></p>
             </b>
         </div>
         <div class="col-sm-4">
@@ -166,7 +170,7 @@ $bln = array(
             <br>
             <br>
             <b>
-                <p align='center'>Syafaat Rahman<br>Kanit HC & Umum</p>
+                <p align='center'><?= $data['nama']; ?><br>Kanit HC & Umum</p>
             </b>
         </div>
     </div>
