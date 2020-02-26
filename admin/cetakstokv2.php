@@ -78,6 +78,24 @@ $bln = array(
 </style>
 <section class="invoice">
     <table>
+        <?php
+        include "../fungsi/koneksi.php";
+        $id = isset($_GET['idjenis']) ? $_GET['idjenis'] : "";
+        switch ($id) {
+            case 1:
+                $material = "ATK";
+                break;
+            case 2:
+                $material = "TINTA";
+                break;
+            case 3:
+                $material = "LAINNYA";
+                break;
+            default:
+                $material = "";
+        }
+
+        ?>
         <thead>
             <tr>
                 <th rowspan="3"><img src="../gambar/logojr.png" style="width:50px;height:50px" /></th>
@@ -88,9 +106,7 @@ $bln = array(
     </table>
     <hr>
     <!-- /.row -->
-    <p align="center" style="font-weight: bold; font-size: 18px;"><u>BUKTI PENGELUARAN BARANG<br>No.28/MU/II/2020</u></p>
-    <p align="left">Kepada Yth.<br>Kanit Operasional</p>
-    <p align="left">Harap diterima barang tersebut dibawah ini</p>
+    <p align="center" style="font-weight: bold; font-size: 18px;"><u>LAPORAN DATA STOK BARANG</u></p>
     <!-- Table row -->
     <div class="row">
         <div class="col-12 table-responsive">
@@ -98,30 +114,32 @@ $bln = array(
                 <thead>
                     <tr>
                         <td style="text-align: center; "><b>No.</b></td>
-                        <td style="text-align: center; "><b>Tanggal Keluar</b></td>
-                        <td style="text-align: center; "><b>Unit Pelayanan</b></td>
                         <td style="text-align: center; "><b>Kode Barang</b></td>
                         <td style="text-align: center; "><b>Nama Barang</b></td>
                         <td style="text-align: center; "><b>Satuan</b></td>
-                        <td style="text-align: center; "><b>Jumlah</b></td>
+                        <td style="text-align: center; "><b>Stok Awal</b></td>
+                        <td style="text-align: center; "><b>Keluar</b></td>
+                        <td style="text-align: center; "><b>Sisa</b></td>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-
-                    include "../fungsi/koneksi.php";
-                    $query = mysqli_query($koneksi, "SELECT pengeluaran.kode_brg, unit, nama_brg, jumlah, satuan, tgl_keluar FROM pengeluaran INNER JOIN stokbarang ON pengeluaran.kode_brg = stokbarang.kode_brg  ");
+                    if (!empty($id)) {
+                        $sql = mysqli_query($koneksi, "SELECT * FROM stokbarang WHERE id_jenis='$id' ");
+                    } else {
+                        $sql = mysqli_query($koneksi, "SELECT * FROM stokbarang");
+                    }
                     $i   = 1;
-                    while ($data = mysqli_fetch_array($query)) {
+                    while ($data = mysqli_fetch_array($sql)) {
                     ?>
                         <tr>
-                            <td style="width: 20px; text-align: center;"><?php echo $i; ?></td>
-                            <td style="width: 200px; text-align: center;"><?php echo $data['tgl_keluar']; ?></td>
-                            <td style="width: 300px; text-align: center;"><?php echo $data['unit']; ?></td>
-                            <td style="width: 200px; text-align: center;"><?php echo $data['kode_brg']; ?></td>
-                            <td style="width: 200px; text-align: center;"><?php echo $data['nama_brg']; ?></td>
-                            <td style="width: 100px; text-align: center;"><?php echo $data['satuan']; ?></td>
-                            <td style="width: 100px; text-align: center;"><?php echo $data['jumlah']; ?></td>
+                            <td style="text-align: center; width=15px;"><?php echo $i; ?></td>
+                            <td style="text-align: center; width=80px;"><?php echo $data['kode_brg']; ?></td>
+                            <td style="text-align: center; width=120px;"><?php echo $data['nama_brg']; ?></td>
+                            <td style="text-align: center; width=70px;"><?php echo $data['satuan']; ?></td>
+                            <td style="text-align: center; width=70px;"><?php echo $data['stok']; ?></td>
+                            <td style="text-align: center; width=70px;"><?php echo $data['keluar']; ?></td>
+                            <td style="text-align: center; width=70px;"><?php echo $data['sisa']; ?></td>
                         </tr>
                     <?php
                         $i++;
@@ -146,11 +164,11 @@ $bln = array(
 
     <div class="row">
         <div class="col-sm-4">
-            <p align='center'>Yang Menerima</p>
+            <p align='center'>Mengetahui :<br>KA UNIT HC & UMUM</p>
             <br>
             <br>
             <b>
-                <p align='center'>Danny Firnando<br>Kanit Operasional</p>
+                <p align='center'><u>M. SYAFAAT, S.T</u><br>NIK : 197810170371</p>
             </b>
         </div>
         <div class="col-sm-4">
@@ -162,11 +180,11 @@ $bln = array(
             </b>
         </div>
         <div class="col-sm-4">
-            <p align='center'>Yang Menyerahkan,</p>
+            <p align='center'>Mengetahui :<br>Asisten Manajer Gudang</p>
             <br>
             <br>
             <b>
-                <p align='center'>Syafaat Rahman<br>Kanit HC & Umum</p>
+                <p align='center'><u>Irwan Saputra, A.MD</u><br>NIK : 19808300482</p>
             </b>
         </div>
     </div>

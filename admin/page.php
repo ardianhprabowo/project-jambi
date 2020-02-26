@@ -45,5 +45,5 @@
         include_once "stokbarang.php";
     } else if ($page == "tambahkategori") {
     include_once "tambahkategori.php";
-}
+    }
  ?>

@@ -30,7 +30,7 @@ $query = mysqli_query($koneksi, "SELECT permintaan.id_permintaan, permintaan.kod
                     <h3 class="text-center">Data Pengeluaran Barang</h3>
                 </div>
                 <div class="box-body">
-                    <a href="cetakbarang.php" target="_blank" style="margin:10px;" class="btn btn-success"><i class='fa fa-print'> Cetak Laporan</i></a>
+                    <a href="cetakbarangv2.php" target="_blank" style="margin:10px;" class="btn btn-success"><i class='fa fa-print'> Cetak Laporan</i></a>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover text-center" id="datapesanan">
                             <thead>

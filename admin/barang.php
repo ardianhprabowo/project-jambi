@@ -40,7 +40,7 @@ if (isset($_GET['id_jenis'])) {
                         </div>
 
                         <div class="col-md-2 pull-right">
-                            <a target="_blank" href="cetakstok.php?idjenis=<?= $id_jenis;  ?>" class="btn btn-success"><i class="fa fa-print"></i> Cetak Data Stok</a><br>
+                            <a target="_blank" href="cetakstokv2.php?idjenis=<?= $id_jenis;  ?>" class="btn btn-success"><i class="fa fa-print"></i> Cetak Data Stok</a><br>
                         </div>
                         <br><br>
                     </div>

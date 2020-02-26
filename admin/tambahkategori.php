@@ -16,6 +16,13 @@ if ($kode_brg) {
     $kode_otomatis = "5";
 }
 
+if (isset($_GET['id_jenis'])) {
+    $id_jenis = $_GET['id_jenis'];
+    $query = mysqli_query($koneksi, "SELECT * FROM stokbarang WHERE id_jenis='$id_jenis' ");
+} else {
+    $query = mysqli_query($koneksi, "SELECT * FROM stokbarang");
+}
+
 ?>
 
 <section class="content">
@@ -26,27 +33,28 @@ if ($kode_brg) {
                     <h3 class="text-center">Tambah Data Stok Barang</h3>
                 </div>
                 <form method="post" action="proses_ktg.php" class="form-horizontal">
-                        <div class="form-group ">
-                            <label for="nama_brg" class="col-sm-offset-1 col-sm-3 control-label">Kode Kategori</label>
-                            <div class="col-sm-4">
-                                <input type="text" value="<?= $kode_otomatis; ?>" class="form-control" name="id_jenis" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label id="tes" for="nama_brg" class="col-sm-offset-1 col-sm-3 control-label">Nama Kategori</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" name="jenis_brg">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" name="simpan" class="btn btn-primary col-sm-offset-4 " value="Simpan">
-                            &nbsp;
-                            <input type="reset" class="btn btn-danger" value="Batal">
+                    <div class="form-group ">
+                        <label for="nama_brg" class="col-sm-offset-1 col-sm-3 control-label">Kode Kategori</label>
+                        <div class="col-sm-4">
+                            <input type="text" value="<?= $kode_otomatis; ?>" class="form-control" name="id_jenis" readonly>
                         </div>
                     </div>
-                </form>
+                    <div class="form-group">
+                        <label id="tes" for="nama_brg" class="col-sm-offset-1 col-sm-3 control-label">Nama Kategori</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" name="jenis_brg">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="simpan" class="btn btn-primary col-sm-offset-4 " value="Simpan">
+                        &nbsp;
+                        <input type="reset" class="btn btn-danger" value="Batal">
+                    </div>
+            </div>
+            </form>
             </div>
         </div>
+    </div>
     </div>
 </section>
 
