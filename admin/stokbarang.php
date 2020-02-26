@@ -31,7 +31,7 @@ if (isset($_GET['id_jenis'])) {
         <div class="col-sm-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="text-center">Olah Data Stok Barang </h3>
+                    <h3 class="text-center">Olah Data Stok Barang</h3>
                 </div>
                 <div class="box-body">
                     <div class="row">
@@ -42,7 +42,7 @@ if (isset($_GET['id_jenis'])) {
                         <div class="col-sm-2 pull-right">
                             <a target="_blank" href="cetakstok.php?idjenis=<?= $id_jenis;  ?>" class="btn btn-success"><i class="fa fa-print"></i> Cetak Data Stok</a><br>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="get">
                                 <div class="form-group">
                                     <select class="form-control" name="jenis_barang">
@@ -71,58 +71,61 @@ if (isset($_GET['id_jenis'])) {
                                 </div>
                             </form>
                         </div>
-                        <div class="col-sm-4">
-                            <a href="index.php?p=stokbarang&id_jenis=<?= $row['id_jenis']; ?>" class="btn btn-info"><i class="fa fa-search"></i> Filter</a>
+                        <div class="col-sm-2">
+                            <a href="index.php?p=stokbarang&id_jenis=1<?= $row['id_jenis']; ?>" class="btn btn-info"><i class="fa fa-search"></i> Filter</a>
                         </div>
-            <div class="table-responsive">
-                <table class="table text-center" id="barang">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Tanggal Masuk</th>
-                            <th>Kode Barang</th>
-                            <th>Nama Barang</th>
-                            <th>Satuan</th>
-                            <th>Stok Awal</th>
-                            <th>Keluar</th>
-                            <th>Sisa</th>
+                        <div class="col-sm-3">
+                            <a href="index.php?p=tambahkategori" class="btn btn-warning"><i class="fa fa-plus"></i> Tambah Kategori Barang</a>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table text-center" id="barang">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Tanggal Masuk</th>
+                                        <th>Kode Barang</th>
+                                        <th>Nama Barang</th>
+                                        <th>Satuan</th>
+                                        <th>Stok Awal</th>
+                                        <th>Keluar</th>
+                                        <th>Sisa</th>
 
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <?php
-                            $no = 1;
-                            if (mysqli_num_rows($query) == 0) echo ("Masukkan Data Dahulu..<tr><td colspan=9>Belum ada Barang</td></tr>");
-                            else echo (""); {
-                                while ($row = mysqli_fetch_assoc($query)) :
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <?php
+                                        $no = 1;
+                                        if (mysqli_num_rows($query) == 0) echo ("Masukkan Data Dahulu..<tr><td colspan=9>Belum ada Barang</td></tr>");
+                                        else echo (""); {
+                                            while ($row = mysqli_fetch_assoc($query)) :
 
-                            ?>
-                                    <td> <?= $no; ?> </td>
-                                    <td> <?= tanggal_indo($row['tgl_masuk']); ?> </td>
-                                    <td> <?= $row['kode_brg']; ?> </td>
-                                    <td> <?= $row['nama_brg']; ?> </td>
-                                    <td> <?= $row['satuan']; ?> </td>
-                                    <td> <?= $row['stok']; ?> </td>
-                                    <td> <?= $row['keluar']; ?> </td>
-                                    <td> <?= $row['sisa']; ?> </td>
-                                    <td>
-                                        <a href="?p=barang&aksi=edit&id=<?= $row['kode_brg']; ?>"><span data-placement='top' data-toggle='tooltip' title='Update'><button class="btn btn-info">Update</button></span></a>
+                                        ?>
+                                                <td> <?= $no; ?> </td>
+                                                <td> <?= tanggal_indo($row['tgl_masuk']); ?> </td>
+                                                <td> <?= $row['kode_brg']; ?> </td>
+                                                <td> <?= $row['nama_brg']; ?> </td>
+                                                <td> <?= $row['satuan']; ?> </td>
+                                                <td> <?= $row['stok']; ?> </td>
+                                                <td> <?= $row['keluar']; ?> </td>
+                                                <td> <?= $row['sisa']; ?> </td>
+                                                <td>
+                                                    <a href="?p=barang&aksi=edit&id=<?= $row['kode_brg']; ?>"><span data-placement='top' data-toggle='tooltip' title='Update'><button class="btn btn-info">Update</button></span></a>
 
-                                        <a href="?p=barang&aksi=hapus&id=<?= $row['kode_brg']; ?>"><span data-placement='top' data-toggle='tooltip' title='Hapus'><button class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus ?')">Hapus</button></span></a>
-                                    </td>
-                        </tr>
-                <?php $no++;
-                                endwhile;
-                            } ?>
-                    </tbody>
-                </table>
+                                                    <a href="?p=barang&aksi=hapus&id=<?= $row['kode_brg']; ?>"><span data-placement='top' data-toggle='tooltip' title='Hapus'><button class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus ?')">Hapus</button></span></a>
+                                                </td>
+                                    </tr>
+                            <?php $no++;
+                                            endwhile;
+                                        } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
-    </div>
 </section>
 <script>
     $(function() {

@@ -43,5 +43,7 @@
         include_once "detilhistory.php";
     }else if ($page == "stokbarang") {
         include_once "stokbarang.php";
-    }
+    } else if ($page == "tambahkategori") {
+    include_once "tambahkategori.php";
+}
  ?>
