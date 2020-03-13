@@ -12,7 +12,15 @@ if (isset($_GET['aksi']) && isset($_GET['tgl'])) {
   }
 }
 $query = mysqli_query($koneksi, "SELECT tgl_permintaan, count(kode_brg),status  FROM permintaan where status in ('0','1') GROUP BY tgl_permintaan  ");
-$query2 = mysqli_query($koneksi, "SELECT COUNT(id_permintaan) AS jml FROM permintaan where status in ('0','1')");
+if ($_SESSION['divisi'] == 'Teknik dan Humas'){
+  $query2 = mysqli_query($koneksi, "SELECT COUNT(id_permintaan) as jml FROM (
+    SELECT id_permintaan,unit, tgl_permintaan,COUNT(*) as jml
+    FROM permintaan WHERE status = '0' and unit in ('Pelayanan','Teknik dan Humas') GROUP BY unit,tgl_permintaan) as totreq");
+} else {
+  $query2 = mysqli_query($koneksi, "SELECT COUNT(id_permintaan) as jml FROM (
+    SELECT id_permintaan,unit, tgl_permintaan,COUNT(*) as jml
+    FROM permintaan WHERE status = '0' and unit = '{$_SESSION['divisi']}' GROUP BY unit,tgl_permintaan) as totreq");
+}
 $data2 = mysqli_fetch_assoc($query2);
 
 $query3 = mysqli_query($koneksi, "SELECT SUM(stok) as jmlbrg FROM stokbarang");
@@ -21,7 +29,15 @@ $data3 = mysqli_fetch_assoc($query3);
 $query4 = mysqli_query($koneksi, "SELECT COUNT(id_user) as jmluser FROM user a JOIN jabatan b on a.idjabatan = b.idjabatan JOIN divisi c on a.iddivisi = c.iddivisi WHERE c.divisi='{$_SESSION['divisi']}' ORDER BY level DESC");
 $data4 = mysqli_fetch_assoc($query4);
 
-$query5 = mysqli_query($koneksi, "SELECT COUNT(id_permintaan) AS jmlkeluar FROM permintaan where status ='4'");
+if ($_SESSION['divisi'] == 'Teknik dan Humas'){
+  $query5 = mysqli_query($koneksi, "SELECT COUNT(id_permintaan) as jmlkeluar FROM (
+    SELECT id_permintaan,unit, tgl_permintaan,COUNT(*) as jmlkeluar
+    FROM permintaan WHERE status = '4' and unit in ('Pelayanan','Teknik dan Humas') GROUP BY unit,tgl_permintaan) as totreq");
+} else {
+  $query5 = mysqli_query($koneksi, "SELECT COUNT(id_permintaan) as jmlkeluar FROM (
+    SELECT id_permintaan,unit, tgl_permintaan,COUNT(*) as jmlkeluar
+    FROM permintaan WHERE status = '4' and unit = '{$_SESSION['divisi']}' GROUP BY unit,tgl_permintaan) as totreq");
+}
 $data5 = mysqli_fetch_assoc($query5);
 ?>
 
@@ -48,7 +64,7 @@ $data5 = mysqli_fetch_assoc($query5);
           <div class="inner">
             <h3><?= $data2['jml']; ?></h3>
 
-            <p>Permintaan Belum Selesai</p>
+            <p>Permintaan Belum di Setujui</p>
           </div>
           <div class="icon">
             <i class="ion ion-bag"></i>

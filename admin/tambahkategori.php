@@ -30,7 +30,7 @@ if (isset($_GET['id_jenis'])) {
         <div class="col-sm-12 col-xs-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="text-center">Tambah Data Stok Barang</h3>
+                    <h3 class="text-center">Tambah Kategori Barang</h3>
                 </div>
                 <form method="post" action="proses_ktg.php" class="form-horizontal">
                     <div class="form-group ">

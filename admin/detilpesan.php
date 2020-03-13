@@ -8,7 +8,7 @@
 
         $query = mysqli_query($koneksi, "SELECT permintaan.tgl_permintaan, permintaan.id_permintaan, permintaan.kode_brg, nama_brg, jumlah, satuan, status FROM permintaan INNER JOIN 
         stokbarang ON permintaan.kode_brg = stokbarang.kode_brg  WHERE tgl_permintaan='$tgl' AND unit='$unit' AND status !='3' and status !='4'");
-               
+        $data = mysqli_fetch_assoc($query);
     }
 
     if (isset($_GET['aksi'])) {
@@ -70,12 +70,10 @@
                                         <td>         
                                         <?php if($row['status'] == 0): ?>
                                             <p> Data Permintaan belum di Setujui Oleh KA Unit </p>
-                                        <?php elseif ($row['status'] == 1): ?>
-                                            <a  href="setuju.php?id=<?= $row['id_permintaan']; ?>"><span data-placement='top' data-toggle='tooltip' title='Setujui'><button   class="btn btn-success">Setujui</button></span></a>       
+                                        <?php elseif ($row['status'] == 1): ?> 
                                             <a  href="tidaksetuju.php?tgl=<?= $tgl; ?>&unit=<?= $unit; ?>&id=<?=$row['id_permintaan']; ?>"><span data-placement='top' data-toggle='tooltip' title='Tidak Setuju'><button   class="btn btn-danger" >Tidak Setuju</button></span></a>            
                                             <a  href="?p=editpesan&id=<?=$row['id_permintaan']; ?>"><span data-placement='top' data-toggle='tooltip' title='Edit'><button   class="btn btn-primary" >Edit</button></span></a>  
                                         <?php elseif ($row['status'] == 2): ?>
-                                            <a  href="konfirmasi.php?id=<?= $row['id_permintaan']; ?>"><span data-placement='top' data-toggle='tooltip' title='Keluarkan Barang'><button   class="btn btn-success">Konfirmasi Pengeluaran</button></span></a>  
                                          <?php elseif ($row['status'] == 3): ?>
                                          <p> Data Permintaan Telah di Batalkan Oleh KA UNIT</p>
                                         <?php else: ?>
@@ -87,6 +85,19 @@
                             <?php $no++; endwhile; }else {echo "<tr><td colspan=9>Tidak ada permintaan Barang.</td></tr>";} ?>
                             </tbody>
                         </table>
+                        <div class="col-sm-3">
+                        <?php if($data['status'] == 0): ?>
+                            <?php elseif ($data['status'] == 1): ?> 
+                            <a  href="setuju.php?unit=<?= $unit ?>&tgl=<?= $tgl ?>"><span data-placement='top' data-toggle='tooltip' title='Setujui'><button   class="btn btn-success">Setujui</button></span></a> 
+                            <?php elseif ($data['status'] == 2): ?>
+                            <a  href="konfirmasi.php?unit=<?= $unit ?>&tgl=<?= $tgl ?>"><span data-placement='top' data-toggle='tooltip' title='Keluarkan Barang'><button   class="btn btn-success">Konfirmasi Pengeluaran</button></span></a>  
+                            <?php elseif ($data['status'] == 3): ?>
+                            <p> Data Permintaan Telah di Batalkan Oleh KA UNIT</p>
+                            <?php else: ?>
+                            <p> Permintaan Selesai di Proses</p>
+                            <?php endif; ?>  
+                            
+                        </div>
                     </div>                  
                 </div>
             </div>

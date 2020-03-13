@@ -68,8 +68,7 @@
                                                ?> 
                                          </td>  
                                         <td> 
-                                        <?php if($row['status'] == 0): ?>
-                                            <a  href="setuju.php?id=<?= $row['id_permintaan']; ?>"><span data-placement='top' data-toggle='tooltip' title='Setujui'><button   class="btn btn-success">Setujui</button></span></a>       
+                                        <?php if($row['status'] == 0): ?>                                            
                                             <a  href="tidaksetuju.php?tgl=<?= $tgl; ?>&unit=<?= $unit; ?>&id=<?=$row['id_permintaan']; ?>"><span data-placement='top' data-toggle='tooltip' title='Tidak Setuju'><button   class="btn btn-danger" >Tidak Setuju</button></span></a>            
                                             <a  href="?p=editpesan&id=<?=$row['id_permintaan']; ?>"><span data-placement='top' data-toggle='tooltip' title='Edit'><button   class="btn btn-primary" >Edit</button></span></a>  
                                         <?php elseif ($row['status'] == 1): ?>
@@ -86,6 +85,10 @@
                             <?php $no++; endwhile; }else {echo "<tr><td colspan=9>Tidak ada permintaan barang.</td></tr>";} ?>
                             </tbody>
                         </table>
+                        
+                        <div class="col-sm-2">
+                            <a  href="setuju.php?unit=<?= $unit ?>&tgl=<?= $tgl ?>"><span data-placement='top' data-toggle='tooltip' title='Setujui'><button   class="btn btn-success">Setujui</button></span></a> 
+                        </div>
                     </div>                  
                 </div>
             </div>

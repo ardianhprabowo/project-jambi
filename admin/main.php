@@ -12,7 +12,9 @@
 		} 
 	}	
 	$query = mysqli_query($koneksi, "SELECT tgl_permintaan, count(kode_brg),status  FROM permintaan where status in ('1','2','3') GROUP BY tgl_permintaan  ");	
-  $query2 = mysqli_query($koneksi, "SELECT COUNT(id_permintaan) AS jml FROM permintaan where status in ('1','2','3')");
+  $query2 = mysqli_query($koneksi, "SELECT COUNT(id_permintaan) as jml FROM (
+    SELECT id_permintaan,unit, tgl_permintaan,COUNT(*) as jml
+    FROM permintaan WHERE status='1' GROUP BY unit,tgl_permintaan) as totreq");
   $data2 = mysqli_fetch_assoc($query2);
 
   $query3 = mysqli_query($koneksi, "SELECT SUM(stok) as jmlbrg FROM stokbarang");
@@ -21,7 +23,9 @@
   $query4 = mysqli_query($koneksi, "SELECT COUNT(id_user) as jmluser FROM user");
   $data4 = mysqli_fetch_assoc($query4);
 
-  $query5 = mysqli_query($koneksi, "SELECT COUNT(id_permintaan) AS jmlkeluar FROM permintaan where status ='4'");
+  $query5 = mysqli_query($koneksi, "SELECT COUNT(id_permintaan) as jmlkeluar FROM (
+    SELECT id_permintaan,unit, tgl_permintaan,COUNT(*) as jmlkeluar
+    FROM permintaan WHERE status ='4' GROUP BY unit,tgl_permintaan) as totreq");
   $data5 = mysqli_fetch_assoc($query5);
 ?>
 

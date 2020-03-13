@@ -2,7 +2,7 @@
 
 $host = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $database = "efactory_db";
 
 $koneksi = mysqli_connect($host, $username, $password, $database);

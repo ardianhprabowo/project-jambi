@@ -5,6 +5,7 @@ include "../fungsi/fungsi.php";
 if (isset($_GET['aksi']) && isset($_GET['id'])) {
     //die($id = $_GET['id']);
     $id = $_GET['id'];
+    
     echo $id;
 
     if ($_GET['konfirmasi'] == 'edit') {

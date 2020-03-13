@@ -75,9 +75,7 @@
                                     <th>Kode Barang</th>        				
 	                				<th>Nama Barang</th>
 									<th>Satuan</th>	 
-	                				<th>Stok Awal</th>
-                                    <th>Keluar</th>
-                                    <th>Sisa</th>              				
+                                    <th>Stok</th>              				
 	                			</tr>
                 			</thead>
                 			<tbody>
@@ -93,13 +91,11 @@
                                         <td> <?= $row['kode_brg']; ?> </td>          					
                 						<td> <?= $row['nama_brg']; ?> </td>
 										<td> <?= $row['satuan']; ?> </td>
-                						<td> <?= $row['stok']; ?> </td>
-                                        <td> <?= $row['keluar']; ?> </td>
                                         <td> <?= $row['sisa']; ?> </td>       				
                 				</tr>
                 			<?php $no++; endwhile; } ?>
                 			</tbody>
-                		</table>
+                		</table>                        
                 	</div>                	
                 </div>
                 </div>

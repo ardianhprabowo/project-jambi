@@ -7,7 +7,16 @@ include "../fungsi/koneksi.php";
 $query = mysqli_query($koneksi, "SELECT COUNT(id_jenis) AS jumlah FROM jenis_barang ");
 $data = mysqli_fetch_assoc($query);
 
-$query2 = mysqli_query($koneksi, "SELECT COUNT(id_permintaan) AS jml FROM permintaan where status = '0' and unit = '{$_SESSION['divisi']}' ");
+if ($_SESSION['divisi'] == 'Teknik dan Humas'){
+  $query2 = mysqli_query($koneksi, "SELECT COUNT(id_permintaan) as jml FROM (
+    SELECT id_permintaan,unit, tgl_permintaan,COUNT(*) as jml
+    FROM permintaan WHERE status = '0' and unit in ('Pelayanan','Teknik dan Humas') GROUP BY unit,tgl_permintaan) as totreq");
+} else {
+  $query2 = mysqli_query($koneksi, "SELECT COUNT(id_permintaan) as jml FROM (
+    SELECT id_permintaan,unit, tgl_permintaan,COUNT(*) as jml
+    FROM permintaan WHERE status = '0' and unit = '{$_SESSION['divisi']}' GROUP BY unit,tgl_permintaan) as totreq");
+}
+
 $data2 = mysqli_fetch_assoc($query2);
 
 if (!empty($_SESSION['login']) && ($_SESSION['level'] == "supervisor")) {
